@@ -39,6 +39,9 @@ pwd
 sudo chkconfig mysqld on
 sudo chkconfig httpd on
 chkconfig --list
+
+
+echo "install ruby"
 curl -L https://get.rvm.io | bash -s
 source /home/ec2-user/.rvm/scripts/rvm
 rvm get stable
@@ -49,4 +52,17 @@ rvm reload
 #rvm use 2.0.0@railstutorial_rails_4_0 --create --default
 #which gem
 #gem update --system 2.0.3
+#gem install rails
+#gem install bundle
+#gem install nokogiri
+#gem install passenger
+#passenger-install-apache2-module
 pwd
+
+echo "install node.js"
+cd ~/
+git clone git://github.com/joyent/node.git
+cd node/
+./configure
+sudo make install
+node -v
