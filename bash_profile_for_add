@@ -1,0 +1,26 @@
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias la='ls -a'
+alias ll='ls -la'
+alias web='cd /var/www/html/'
+alias js='cd /var/www/html/js/'
+#alias railsdir='cd /var/www/html/rails/'
+alias isi='cd /var/www/html/rails/isitter/'
+alias phpdir='cd /var/www/html/php/'
+alias html='cd /var/www/html/html/'
+alias vimrc='vim ~/.vimrc'
+alias .vim='cd ~/.vim/bundle'
+alias vi='vim'
+alias ..='cd ../'
+alias bp='vi ~/.bash_profile'
+alias sbp='source ~/.bash_profile'
+
+#ctrl+sを無効化するため
+stty -ixon -ixoff
+
+#コマンド履歴数
+HISTSIZE=10000
+HISTIGNORE='ls:history:ll:fg:vi:mb:.vim:exit:cd:js:node app.js:rails s'
+HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
