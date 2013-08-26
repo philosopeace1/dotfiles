@@ -44,6 +44,14 @@ echo "make sybnbolic link"
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.inputrc ~/.inputrc
 
+echo "install mongodb"
+echo "[10gen]
+name=10gen Repository
+baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64
+gpgcheck=0
+enabled=1" | sudo tee -a /etc/yum.repos.d/10gen.repo
+sudo yum install -y mongo-10gen-server
+
 
 echo "install ruby"
 curl -L https://get.rvm.io | bash -s
@@ -52,7 +60,7 @@ rvm get stable
 #rvm notes
 #rvm requirements
 rvm reload
-#rvm install 2.0.0 --with-openssl-dir=$HOME/.rvm/usr
+rvm install 2.0.0 --with-openssl-dir=$HOME/.rvm/usr
 #rvm use 2.0.0@railstutorial_rails_4_0 --create --default
 #which gem
 #gem update --system 2.0.3
