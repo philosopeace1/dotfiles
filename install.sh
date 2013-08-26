@@ -4,7 +4,7 @@
 #sh dotfiles/install_sh
 cd ~/
 
-sudo yum install -y httpd php mysql-server gcc make ncurses-devel patch make php-mysql tree php-devel httd-devel php-pear php-gd  php-mbstring php-pecl-apc memcached  php-pecl-memcached php-pecl-memcache php-mcrypt gettext  mod_ssl mongo-10gen mongo-10gen-server libyaml-devel libxslt-dev libxml2-dev libsqlite3-dev libtool libxslt libksba openssl sqlite-devel curl-devel httpd-devel mysql-devel
+sudo yum install -y httpd php mysql-server gcc make ncurses-devel patch make php-mysql tree php-devel httd-devel php-pear php-gd  php-mbstring php-pecl-apc memcached  php-pecl-memcached php-pecl-memcache php-mcrypt gettext  mod_ssl mongo-10gen mongo-10gen-server libyaml-devel libxslt-dev libxml2-dev libsqlite3-dev libtool libxslt libksba openssl sqlite-devel curl-devel httpd-devel mysql-devel gcc-c++
 
 
 echo "install vim7.3"
@@ -40,13 +40,17 @@ sudo chkconfig mysqld on
 sudo chkconfig httpd on
 chkconfig --list
 
+echo "make sybnbolic link"
+ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.inputrc ~/.inputrc
+
 
 echo "install ruby"
 curl -L https://get.rvm.io | bash -s
 source /home/ec2-user/.rvm/scripts/rvm
 rvm get stable
-rvm notes
-rvm requirements
+#rvm notes
+#rvm requirements
 rvm reload
 #rvm install 2.0.0 --with-openssl-dir=$HOME/.rvm/usr
 #rvm use 2.0.0@railstutorial_rails_4_0 --create --default
