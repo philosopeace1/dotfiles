@@ -85,6 +85,10 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set backspace=indent,eol,start
+"以下３行swpファイルの保存場所を指定する
+set backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/tmp
 
 set tags+=.tags;
 call pathogen#infect()
@@ -114,7 +118,7 @@ inoremap =<TAB> <Space>=<Space>
 nnoremap <CR> i<CR><UP><ESC>
 map ,y :'s,'ey<CR>
 map ,d :'s,'ed<CR>
-nnoremap ,q <ESC>:bd
+nnoremap ,q <ESC>:bd<CR>
 inoremap <C-O> <ESC>o
 inoremap <C-W> <ESC>:w
 "nnoremap <C-W> <ESC>:w
@@ -149,7 +153,7 @@ let g:neocomplcache_enable_at_startup = 1
 
 " ユーザー定義スニペット保存ディレクトリ
 let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
-nmap ,sni :NeoComplCacheEditSnippets 
+nmap ,sni :NeoSnippetEdit
 
 " Enable omni completion. Not required if they are already set elsewhere in .vimrc
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -174,8 +178,12 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+"let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/snippets'
 
 "unite.vim""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:unite_enable_start_insert = 1
+let g:unite_source_history_yank_enable =1
 "let g:unite_enable_start_insert = 1
 " バッファ一覧
 "nnoremap ;; :<C-u>Unite buffer -direction=botright -auto-resize -toggle<CR>
@@ -201,7 +209,7 @@ let g:html_indent_style1 = "inc"
 " ホームポジションに近いキーを使う
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 " 「'」 + 何かにマッピング
-let g:EasyMotion_leader_key="<SPACE><SPACE>"
+let g:EasyMotion_leader_key="<SPACE>"
 " 1 ストローク選択を優先する
 let g:EasyMotion_grouping=1
 " カラー設定変更
@@ -235,7 +243,34 @@ endfunction
 
 
 "unite-rails""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap :rc :<C-u>Unite rails/controller<CR>
-noremap :rm :<C-u>Unite rails/model<CR>
-noremap :rv :<C-u>Unite rails/view<CR>
-noremap :rh :<C-u>Unite rails/helper<CR>
+noremap ,c :<C-u>Unite rails/controller<CR>
+noremap ,rc :<C-u>Unite rails/controller<CR>
+noremap ,m :<C-u>Unite rails/model<CR>
+noremap ,rm :<C-u>Unite rails/model<CR>
+noremap ,v :<C-u>Unite rails/view<CR>
+noremap ,rv :<C-u>Unite rails/view<CR>
+noremap ,h :<C-u>Unite rails/helper<CR>
+noremap ,j :<C-u>Unite rails/javascript<CR>
+noremap ,rj :<C-u>Unite rails/javascript<CR>
+noremap ,s :<C-u>Unite rails/stylesheet<CR>
+noremap ,rs :<C-u>Unite rails/stylesheet<CR>
+noremap ,cf :<C-u>Unite rails/config<CR>
+
+
+"taglist""""""""""""""""""""""""""""""""""""""""""""""""""
+"set tags = tags
+"let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+let Tlist_Ctags_Cmd = "/usr/local/Cellar/ctags/5.8/bin/ctags"
+let Tlist_Show_One_File = 1 "現在表示中のファイルのみのタグしか表示しない
+let Tlist_Use_Right_Window = 1                    " 右側にtag listのウインドうを表示する
+let Tlist_Exit_OnlyWindow = 1                      " taglistのウインドウだけならVimを閉じる
+"map <silent> <leader>l :TlistToggle<CR>  "\lでtaglistウインドウを開いたり閉じたり出来るショートカット
+map ,t <Esc>:TlistToggle<CR><C-W><C-W>
+
+
+"coffe-script""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"let coffee_compile_vert = 1
+"nnoremap ,cc <ESC>:CoffeeCompile vert<CR>
+nnoremap ,cc <ESC>:CoffeeCompile vert <CR><C-w><C-W>
+nnoremap ,ccc <ESC><C-w><C-W>:bd <CR>
