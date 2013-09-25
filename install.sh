@@ -19,6 +19,9 @@ cat patches/7.3.* | patch -p0
 make
 sudo make install
 vim --version
+cd ~/
+rm vim-7.3.tar.bz2
+
 echo "install ctags"
 cd ~/
 wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
@@ -44,37 +47,3 @@ echo "make sybnbolic link"
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.inputrc ~/.inputrc
 
-echo "install mongodb"
-echo "[10gen]
-name=10gen Repository
-baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64
-gpgcheck=0
-enabled=1" | sudo tee -a /etc/yum.repos.d/10gen.repo
-sudo yum install -y mongo-10gen-server
-
-
-echo "install ruby"
-curl -L https://get.rvm.io | bash -s
-source /home/ec2-user/.rvm/scripts/rvm
-rvm get stable
-#rvm notes
-#rvm requirements
-rvm reload
-rvm install 2.0.0 --with-openssl-dir=$HOME/.rvm/usr
-#rvm use 2.0.0@railstutorial_rails_4_0 --create --default
-#which gem
-#gem update --system 2.0.3
-#gem install rails
-#gem install bundle
-#gem install nokogiri
-#gem install passenger
-#passenger-install-apache2-module
-pwd
-
-echo "install node.js"
-cd ~/
-git clone git://github.com/joyent/node.git
-cd node/
-./configure
-sudo make install
-node -v

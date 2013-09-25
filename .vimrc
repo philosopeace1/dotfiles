@@ -43,7 +43,7 @@
 
  " Non github repos
  "NeoBundle 'git://git.wincent.com/command-t.git'
- NeoBundle 'https://gist.github.com/762326.git'
+ "NeoBundle 'https://gist.github.com/762326.git'
  
  " Non git repos
  "NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
